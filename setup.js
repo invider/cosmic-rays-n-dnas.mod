@@ -9,6 +9,10 @@ function setup() {
     // global shortcut to cosmos
     $.cosmos = cosmos
 
+    cosmos.spawn('spaceBackground', {
+        name: 'stars'
+    })
+
     if (env.config.fast) {
           trap('start')
 

@@ -1,5 +1,6 @@
 // style constants are defined here
 const style = {
+    space: hsl(.76, .25, .05),
     background: hsl(.7, 0, 0),
     targetWidth: 320,
     targetHeight: 240,
