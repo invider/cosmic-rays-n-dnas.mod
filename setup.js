@@ -9,15 +9,6 @@ function setup() {
     // shortcut to cosmos
     $.cosmos = cosmos
 
-    lab.spawn('Dna', {
-        x: 10,
-        y: ry(0.25)
-    })
-
-    // start the game
-    // TODO move to the menu 'New Game' option
-    trap('start')
-
     lab.spawn('Transition', {
       time: 2,
       Z: 9999,
@@ -33,4 +24,10 @@ function setup() {
       name: 'Transition2',
       backgroundImage: res.backgrounds.splash2
     });
+
+    setTimeout(() => {
+      // start the game
+      // TODO move to the menu 'New Game' option
+      trap('start')
+    }, 11000);
 }
