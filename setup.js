@@ -1,5 +1,11 @@
 function setup() {
-    //lab.spawn('Sequence')
+
+    const hud = lab.spawn('hud/Hud', {
+        Z: 1,
+        name: 'hud',
+    })
+    const world = lab.hud.spawn('hud/World') 
+
     lab.spawn('Dna', {
         x: 10,
         y: ry(0.5)

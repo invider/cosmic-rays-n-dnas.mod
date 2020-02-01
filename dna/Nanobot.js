@@ -1,34 +1,27 @@
-const BORDER = rx(.05)
-
 class Nanobot {
     
-    constructor() {
+    constructor(st) {
         this.Z = 11
         this.name = 'nanobot'
-        this.r = ry(.04),
-        this.x = rx(.5),
-        this.y = ry(1) - this.r,
-        this.color = hsl(.55, .4, .4)
+        this.r = 32,
+        this.x = 0
+        this.y = 0,
+
+        augment(this, st)
     }
 
     evo(dt) {
+        /*
         this.x = limit(mouse.x,
-            this.r + BORDER,
-            rx(1) - this.r - BORDER)
+            this.r + env.tune.border,
+            rx(1) - this.r - env.tune.border)
+        */
     }
-
+    
     draw() {
         const { x, y, r } = this
 
         blocky()
         image(res.sprites.bot, x-r, y-r, 2*r, 2*r)
-        /*
-        fill(this.color)
-        rect(x-r, y-r, 2*r, 2*r)
-
-        lineWidth(4)
-        stroke(this.color)
-        line(x, y-r, x, y-r*1.5)
-        */
     }
 }
