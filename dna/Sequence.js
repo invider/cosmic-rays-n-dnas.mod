@@ -9,6 +9,7 @@ const defaults = {
 class Sequence {
 
     constructor(st) {
+        this.Z = 2
         this.name = 'sequencer'
         this.atoms = []
         augment(this, defaults)
