@@ -17,6 +17,17 @@ class Nanobot {
         this.y = this.__.ry(1) - this.h/2
     }
 
+    shot() {
+        log('shooting')
+        $.cosmos.spawn(dna.Nucleo, {
+            Z: this.Z + 1,
+            x: this.x,
+            y: this.y,
+            dx: 0,
+            dy: -env.tune.shotSpeed,
+        })
+    }
+
     evo(dt) {
         const edge = env.tune.border + this.w/2
         this.x = limit($.cosmos.worldX(mouse.x),

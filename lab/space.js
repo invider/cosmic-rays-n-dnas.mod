@@ -76,10 +76,10 @@ module.exports =  {
         // draw stars
         blocky()
         this.stars.forEach( star => {
-            let img = res['star-blue']
+            let img = res.stars['star-blue']
             switch(star.c) {
-            case 1: img = res['star-blue']; break;
-            case 2: img = res['star-yellow']; break;
+            case 1: img = res.stars['star-blue']; break;
+            case 2: img = res.stars['star-yellow']; break;
             }
             image(img, star.x, star.y, star.m, star.m)
         })
