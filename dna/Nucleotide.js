@@ -8,10 +8,7 @@ class Nucleotide {
         this.rightY = 0;
         this.left = Math.random() > 0.5 ? "blue": "red",
         this.right = Math.random() > 0.5 ? "blue": "red",
-        this.map = {
-            "blue": [res.sprites.atom_blue, "#091c67"],
-            "red": [res.sprites.atom_red, "#670909"]
-        }
+        this.nucleoColors = env.tune.nucleoColors;
         this.rotation = 0;
         this.size = $.cosmos.ry(.2)
         augment(this, settings);
@@ -47,7 +44,7 @@ class Nucleotide {
             (!this.rightDamaged && mode == "right")
         ) {
             //this.drawDamage(mode, x, y);
-            image(mode == "left" ? this.map[this.left][0]: this.map[this.right][0], x, y, sizeX, sizeY);
+            image(mode == "left" ? this.nucleoColors[this.left][0]: this.nucleoColors[this.right][0], x, y, sizeX, sizeY);
             
         }
     }
@@ -66,9 +63,9 @@ class Nucleotide {
     draw(){
        
         lineWidth(env.style.nucleotideLinkWidth);
-        stroke(this.map[this.left][1]);
+        stroke(this.nucleoColors[this.left][1]);
         line(this.x, this.y - this.distance, this.x, this.y);
-        stroke(this.map[this.right][1]);
+        stroke(this.nucleoColors[this.right][1]);
         line(this.x, this.y + this.distance, this.x, this.y);
         blocky()
         if (this.leftSize < this.rightSize){
