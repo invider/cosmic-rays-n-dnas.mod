@@ -1,2 +1,9 @@
 .idea
+
+# collider.jam
 units.json
+dist
+*.out
+
+
+

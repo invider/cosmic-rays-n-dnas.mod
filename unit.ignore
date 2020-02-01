@@ -1,2 +1,6 @@
+dist
 .git*
+LICENSE
+README*
+
 collider-ext.mix/fix/boot*

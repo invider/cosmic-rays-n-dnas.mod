@@ -1,8 +1,10 @@
+let id = 0
+
 class Radiation {
     
     constructor(params) {
         this.Z = 11;
-        this.name = 'radiation';
+        this.name = 'radiation' + (++id);
         this.target = undefined;
         this.targetDirection = "right"
         this.x = 0;
@@ -21,7 +23,7 @@ class Radiation {
             ySpeed /= len
             this.x += xSpeed * speed;
             this.y += ySpeed * speed;
-            if (this.target.getDistanceToAtom(this.x, this.y) < 32){
+            if (this.target.getDistanceToAtom(this.x, this.y) < 10) {
                 if (this.targetDirection === "left") {
                     this.target.leftDamaged = true;
                 } else {

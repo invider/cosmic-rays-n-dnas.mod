@@ -6,7 +6,7 @@ function start() {
     })
     $.DNA = DNA
 
-    lib.util.hideCursor()
+    //lib.util.hideCursor()
 
     // create dna and nanobot
     const cosmos = lab.hud.cosmos
