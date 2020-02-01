@@ -21,10 +21,21 @@ class Radiation {
             ySpeed /= len
             this.x += xSpeed * speed;
             this.y += ySpeed * speed;
+            if (dist(this.x, this.y, this.target.x, targetY) < 32){
+                if (this.targetDirection === "left") {
+                    this.target.leftDamaged = true;
+                } else {
+                    this.target.rightDamaged = true;
+                }
+                
+                
+                this.__.detach(this);
+            }
         }
     }
 
     draw() {
+        alpha(1);
         image(res.sprites.rad, this.x, this.y, 8, 8);
     }
 }
