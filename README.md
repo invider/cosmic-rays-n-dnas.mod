@@ -15,3 +15,14 @@ Open *.mod folder and run
 jam
 ```
 
+Run in develop mode with hot code reload
+
+```
+jam -d
+```
+
+Skip splash screens
+
+```
+jam -d --fast
+```

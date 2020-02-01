@@ -1,18 +1,28 @@
+const defaults = {
+    Z: 2,
+    name: 'dna',
+    x: 0,
+    y: 0,
+}
+
 class Dna extends sys.LabFrame {
     constructor(settings){
         super();
-        this.Z = 2;
-        this.x = 0;
-        this.y = 0;
-        sys.augment(this, settings);
+        augment(this, defaults)
+        augment(this, settings)
     }
 
     init() {
-        for (let i=0; i<100; i++){
+        const step = 20
+
+        let x = step
+
+        while (x < $.cosmos.rx(1)) {
             this.spawn(dna.Nucleotide, {
-                x: this.x + i * 35,
-                y: this.y
+                x: x,
+                y: 0,
             })
+            x += step
         }
     }
 
@@ -22,5 +32,4 @@ class Dna extends sys.LabFrame {
         super.draw();
         restore();
     }
-
 }

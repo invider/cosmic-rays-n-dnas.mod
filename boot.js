@@ -16,7 +16,6 @@ let hold = 5
 let fade = 1
 let wait = 0.5
 
-
 // boot state
 let time = 0
 let state = 'loading'
@@ -82,6 +81,7 @@ function init() {
         contentLow = bt.contentLow || contentLow
         fadeBase = bt.fadeBase || fadeBase
     }
+    if (env.config.fast) hold = 0
 }
 
 function evoWorm(dt) {
@@ -466,7 +466,8 @@ function updateLoadingStatus() {
     let amount = 1
     if (state === 'loading' || state === 'holding') {
         // we are faking percentage to include time left to hold
-        amount = (loaded/included + time/hold)/2
+        if (hold === 0) amount = loaded/included
+        else amount = (loaded/included + time/hold)/2
     }
 
     const percent = Math.round(amount * 100)
@@ -508,7 +509,6 @@ function evoBoot(dt) {
         break;
     }
 }
-
 
 
 function evo(dt) {

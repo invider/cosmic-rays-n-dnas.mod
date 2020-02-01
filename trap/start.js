@@ -1,10 +1,9 @@
 // traps the start of the game
 function start() {
-    lab.spawn('Dna', {
-      x: 10,
-      y: ry(0.25)
+    $.cosmos.spawn('Dna', {
+        x: 0,
+        y: $.cosmos.ry(.5)
     })
-
 
     lib.util.hideCursor()
 
