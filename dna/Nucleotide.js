@@ -22,8 +22,10 @@ class Nucleotide {
         line(this.x, this.y + distance, this.x, this.y);
         let size1 = 32 * sizeMultiplier;
         let size2 = 32 * size2Multiplier;
-        image(res.sprites.atom, this.x - size1 / 2, this.y - distance - size1 / 2, size1, size1);
-        image(res.sprites.atom, this.x - size2 / 2, this.y + distance - size2 / 2, size2, size2);
+
+        blocky()
+        image(res.sprites.atom_blue, this.x - size1 / 2, this.y - distance - size1 / 2, size1, size1);
+        image(res.sprites.atom_red, this.x - size2 / 2, this.y + distance - size2 / 2, size2, size2);
     }
 
 }
