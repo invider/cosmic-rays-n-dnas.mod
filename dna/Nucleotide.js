@@ -5,8 +5,8 @@ class Nucleotide {
         this.left = Math.random() > 0.5 ? "blue": "red",
         this.right = Math.random() > 0.5 ? "blue": "red",
         this.map = {
-            "blue": [res.sprites.atom_blue, "#0000FF"],
-            "red": [res.sprites.atom_red, "#FF0000"]
+            "blue": [res.sprites.atom_blue, "#1134c1"],
+            "red": [res.sprites.atom_red, "#C11111"]
         }
         this.rotation = 0;
         this.size = ry(0.3);
