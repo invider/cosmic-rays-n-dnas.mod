@@ -9,13 +9,15 @@ class Radiation {
         this.targetDirection = "right"
         this.x = 0;
         this.y = 0;
+        this.minDist = Infinity;
         augment(this, params);
     }
 
     evo(dt) {
         if (this.target){
+            let dist = this.target.getDistanceToAtom(this.x, this.y);
             let targetY = this.targetDirection == "left" ? this.target.leftY : this.target.rightY;
-            let speed = dt * 1500;
+            let speed = dt * 200;
             let xSpeed = (this.target.x - this.x);
             let ySpeed = (targetY - this.y);
             let len = length(xSpeed, ySpeed)
@@ -23,16 +25,17 @@ class Radiation {
             ySpeed /= len
             this.x += xSpeed * speed;
             this.y += ySpeed * speed;
-            if (this.target.getDistanceToAtom(this.x, this.y) < 10) {
+            
+            console.log(dist);
+            if (dist < 20 || dist > this.minDist) {
                 if (this.targetDirection === "left") {
                     this.target.leftDamaged = true;
                 } else {
                     this.target.rightDamaged = true;
                 }
-                
-                
                 this.__.detach(this);
             }
+            this.minDist = Math.min(this.minDist, dist);
         }
     }
 
