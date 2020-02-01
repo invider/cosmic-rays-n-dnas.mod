@@ -37,14 +37,8 @@ class Nanobot {
             y: this.y,
             dx: 0,
             dy: 0,
-            image: this.getNextNucleoColor()[0]
+            image: lib.util.getRandomNucleoColor()[0]
         })
-    }
-
-    getNextNucleoColor() {
-        const colors = Object.keys(env.tune.nucleoColors);
-        const randomColor = RND(0, colors.length - 1);
-        return env.tune.nucleoColors[colors[randomColor]];
     }
 
     draw() {

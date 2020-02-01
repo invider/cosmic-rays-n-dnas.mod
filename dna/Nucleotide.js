@@ -6,8 +6,8 @@ class Nucleotide {
         this.rightDamaged = false;
         this.leftY = 0;
         this.rightY = 0;
-        this.left = Math.random() > 0.5 ? "blue": "red",
-        this.right = Math.random() > 0.5 ? "blue": "red",
+        this.left = lib.util.getRandomColor();
+        this.right = lib.util.getRandomColor();
         this.nucleoColors = env.tune.nucleoColors;
         this.rotation = 0;
         this.size = $.cosmos.ry(.2)
