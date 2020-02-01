@@ -14,9 +14,23 @@ function setup() {
         y: ry(0.25)
     })
 
-    lab.transition.transit(2, 0.5)
-
     // start the game
     // TODO move to the menu 'New Game' option
     trap('start')
+
+    lab.spawn('Transition', {
+      time: 2,
+      Z: 9999,
+      startIn: 3000,
+      name: 'Transition1',
+      backgroundImage: res.backgrounds.splash1
+    });
+
+    lab.spawn('Transition', {
+      time: 2,
+      Z: 9999,
+      startIn: 9000,
+      name: 'Transition2',
+      backgroundImage: res.backgrounds.splash2
+    });
 }
