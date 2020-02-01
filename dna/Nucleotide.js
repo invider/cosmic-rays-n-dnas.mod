@@ -13,9 +13,10 @@ class Nucleotide {
 
     draw(){
         let offset = this.x / 100 + this.rotation;
-        let multiplier = Math.sin(offset);
-        let sizeMultiplier = Math.abs(Math.sin(offset + 300)) + 0.3;
-        let size2Multiplier = Math.abs(Math.sin(offset)) + 0.5;
+        let angle = offset;
+        let multiplier = Math.cos(angle);
+        let sizeMultiplier = (Math.cos(angle - Math.PI / 2) + 2) / 2;
+        let size2Multiplier = (Math.cos(angle + Math.PI / 2) + 2) / 2;
         let distance = this.size * multiplier;
         stroke("#FF0000");
         line(this.x, this.y - distance, this.x, this.y);
