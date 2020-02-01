@@ -9,7 +9,7 @@ class Nucleotide {
             "red": [res.sprites.atom_red, "#670909"]
         }
         this.rotation = 0;
-        this.size = ry(0.3);
+        this.size = ry(0.2);
         augment(this, settings);
     }
 
