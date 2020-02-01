@@ -16,8 +16,8 @@ class Nucleotide {
         let multiplier = Math.sin(offset);
         let sizeMultiplier = Math.abs(Math.sin(offset + 300)) + 0.3;
         let size2Multiplier = Math.abs(Math.sin(offset)) + 0.5;
-        let distance = this.size * multiplier
-        stroke("#FF0000")
+        let distance = this.size * multiplier;
+        stroke("#FF0000");
         line(this.x, this.y - distance, this.x, this.y);
         line(this.x, this.y + distance, this.x, this.y);
         let size1 = 32 * sizeMultiplier;
