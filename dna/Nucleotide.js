@@ -35,6 +35,12 @@ class Nucleotide {
         this.leftY = this.y - this.distance - this.leftSize / 2;
         this.rightY = this.y + this.distance - this.leftSize / 2;
     }
+    getAtomY(direction){
+        return direction == "left" ? this.leftY : this.rightY;
+    }
+    getDistanceToAtom(x, y, direction){
+        return dist(x, y, this.x, this.getAtomY(direction));
+    }
     drawAtom(mode, x, y, sizeX, sizeY){
         if (
             (!this.leftDamaged && mode == "left") ||

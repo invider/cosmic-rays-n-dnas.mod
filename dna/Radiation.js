@@ -21,7 +21,7 @@ class Radiation {
             ySpeed /= len
             this.x += xSpeed * speed;
             this.y += ySpeed * speed;
-            if (dist(this.x, this.y, this.target.x, targetY) < 32){
+            if (this.target.getDistanceToAtom(this.x, this.y) < 32){
                 if (this.targetDirection === "left") {
                     this.target.leftDamaged = true;
                 } else {
