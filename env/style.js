@@ -4,4 +4,8 @@ const style = {
     targetWidth: 320,
     targetHeight: 240,
     border: 10,
+
+    nucleotideBaseSize: 12,
+    rotationScaleFactor: 8,
+    nucleotideLinkWidth: 2,
 }

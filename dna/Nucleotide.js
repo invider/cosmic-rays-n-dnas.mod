@@ -13,7 +13,7 @@ class Nucleotide {
             "red": [res.sprites.atom_red, "#670909"]
         }
         this.rotation = 0;
-        this.size = ry(0.2);
+        this.size = $.cosmos.ry(.2)
         augment(this, settings);
     }
 
@@ -28,8 +28,10 @@ class Nucleotide {
         let size2Multiplier = Math.cos(angle + Math.PI / 2) + 1;
         this.distance = this.size * multiplier;
        
-        this.leftSize = 28 + 8 * sizeMultiplier;
-        this.rightSize = 28 + 8 * size2Multiplier;
+        const base = env.style.nucleotideBaseSize
+        const factor = env.style.rotationScaleFactor
+        this.leftSize = base + factor * sizeMultiplier;
+        this.rightSize = base + factor * size2Multiplier;
         this.leftY = this.y - this.distance - this.leftSize / 2;
         this.rightY = this.y + this.distance - this.leftSize / 2;
     }
@@ -57,7 +59,7 @@ class Nucleotide {
     // }
     draw(){
        
-        lineWidth(5);
+        lineWidth(env.style.nucleotideLinkWidth);
         stroke(this.map[this.left][1]);
         line(this.x, this.y - this.distance, this.x, this.y);
         stroke(this.map[this.right][1]);

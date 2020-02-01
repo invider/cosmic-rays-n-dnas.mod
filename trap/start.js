@@ -1,9 +1,10 @@
 // traps the start of the game
 function start() {
-    $.cosmos.spawn('Dna', {
+    const DNA = $.cosmos.spawn('Dna', {
         x: 0,
         y: $.cosmos.ry(.5)
     })
+    $.DNA = DNA
 
     lib.util.hideCursor()
 
