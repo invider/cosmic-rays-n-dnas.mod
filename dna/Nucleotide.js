@@ -2,8 +2,8 @@ class Nucleotide {
     constructor(settings){
         this.x = 0;
         this.y = 0;
-        this.left = "blue",
-        this.right = "red",
+        this.left = Math.random() > 0.5 ? "blue": "red",
+        this.right = Math.random() > 0.5 ? "blue": "red",
         this.map = {
             "blue": [res.sprites.atom_blue, "#0000FF"],
             "red": [res.sprites.atom_red, "#FF0000"]
