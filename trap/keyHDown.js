@@ -13,7 +13,4 @@ module.exports = function(e) {
             targetDirection: "right"
         })
     }
-    
-    
-
 }
