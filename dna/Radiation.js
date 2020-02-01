@@ -26,7 +26,6 @@ class Radiation {
             this.x += xSpeed * speed;
             this.y += ySpeed * speed;
             
-            console.log(dist);
             if (dist < 20 || dist > this.minDist) {
                 if (this.targetDirection === "left") {
                     this.target.leftDamaged = true;
