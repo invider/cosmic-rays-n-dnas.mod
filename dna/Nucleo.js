@@ -14,13 +14,18 @@ class Nucleo {
     }
 
     evo(dt) {
+        if (this.y < 0){
+            this.__.detach(this);
+        }
         this.x += this.dx * dt
         this.y += this.dy * dt
-        lib.util.findNode(o => o instanceof dna.Nucleotide && o[this.type + "Damaged"] && o.getDistanceToAtom(this.x, this.y, this.type) < 32)
+        lib.util.findNode(o => o instanceof dna.Nucleotide && o.isDamaged(this.type))
             .forEach(o => {
-                debugger;
-                this.__.detach(this);
-                o[this.type + "Damaged"] = false;
+                let dist = o.getDistanceToAtom(this.x, this.y, this.type);
+                if ( dist < 30){
+                    this.__.detach(this);
+                    o.setDamaged(this.type, false)
+                }
             });
     }
 

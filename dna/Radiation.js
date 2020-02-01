@@ -15,7 +15,7 @@ class Radiation {
 
     evo(dt) {
         if (this.target){
-            let dist = this.target.getDistanceToAtom(this.x, this.y);
+            let dist = this.target.getDistanceToAtom(this.x, this.y, this.targetDirection);
             let targetY = this.targetDirection == "left" ? this.target.leftY : this.target.rightY;
             let speed = dt * 200;
             let xSpeed = (this.target.x - this.x);
