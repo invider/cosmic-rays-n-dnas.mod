@@ -7,7 +7,7 @@ class Dna extends sys.LabFrame {
         sys.augment(this, settings);
         for (let i=0; i<100; i++){
             sys.spawn(dna.Nucleotide, {
-                x: this.x + i * 30,
+                x: this.x + i * 35,
                 y: this.y
             })
         }
