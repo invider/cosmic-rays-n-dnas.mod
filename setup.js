@@ -4,7 +4,10 @@ function setup() {
         Z: 1,
         name: 'hud',
     })
-    const world = lab.hud.spawn('hud/World') 
+    const cosmos = lab.hud.spawn('hud/Cosmos') 
+
+    // shortcut to cosmos
+    $.cosmos = cosmos
 
     lab.spawn('Dna', {
         x: 10,

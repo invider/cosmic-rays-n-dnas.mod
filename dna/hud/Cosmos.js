@@ -6,7 +6,7 @@ const defaults = {
     Z: 10,
     keepZ: true,
     
-    name: 'world',
+    name: 'cosmos',
 
     x: 0,
     y: 0,
@@ -15,17 +15,55 @@ const defaults = {
     border: 0,
 }
 
-const World = function(dat) {
+const Cosmos = function(dat) {
     sys.augment(this, defaults)
     Container.call(this, dat)
 }
-World.prototype = Object.create(Container.prototype)
+Cosmos.prototype = Object.create(Container.prototype)
 
-World.prototype.init = function() {
+Cosmos.prototype.init = function() {
     this.adjust()
 }
 
-World.prototype.adjust = function() {
+// return horizontal coordinate from a relative 0..1 value
+Cosmos.prototype.rx = function(v) {
+    return this._w * v
+}
+
+// return vertical coordinate from a relative 0..1 value
+Cosmos.prototype.ry = function(v) {
+    return this._h * v
+}
+
+// return horizontal coordinate from a relative 0..1 value
+// limited to the screen width
+Cosmos.prototype.lrx = function(v) {
+    return this._w * limit(v, 0, 1)
+}
+
+// return vertical coordinate from a relative 0..1 value
+// limited to the screen height
+Cosmos.prototype.lry = function(v) {
+    return this._h * limit(v, 0, 1)
+}
+
+Cosmos.prototype.screenX = function(x) {
+    return this.x + x * this.scale
+}
+
+Cosmos.prototype.screenY = function(y) {
+    return this.y + y * this.scale
+}
+
+Cosmos.prototype.worldX = function(x) {
+    return (x - this.x) / this.scale
+}
+
+Cosmos.prototype.worldY = function(y) {
+    return (y - this.y) / this.scale
+}
+
+Cosmos.prototype.adjust = function() {
     // calculate scale
     const border = env.style.border
     const targetW = env.style.targetWidth
@@ -49,9 +87,9 @@ World.prototype.adjust = function() {
     this._ls.forEach(w => { if (sys.isFun(w.adjust)) w.adjust() })
 }
 
-World.prototype.drawBackground = function() {}
+Cosmos.prototype.drawBackground = function() {}
 
-World.prototype.draw = function() {
+Cosmos.prototype.draw = function() {
     ctx.save()
 
     ctx.translate(this.x, this.y)
@@ -60,9 +98,11 @@ World.prototype.draw = function() {
     ctx.clip()
     ctx.scale(this.scale, this.scale)
 
+    /*
     stroke('#ff0000')
     lineWidth(2)
     rect(0, 0, 320, 240)
+    */
 
     this.drawBackground()
     this.drawContent()
@@ -70,27 +110,27 @@ World.prototype.draw = function() {
     ctx.restore()
 }
 
-World.prototype.onClick = function(x, y, e) {
+Cosmos.prototype.onClick = function(x, y, e) {
     if (this.hidden || this.disabled) return
     Container.prototype.onClick.call(this, x/this.scale, y/this.scale, e)
 }
 
-World.prototype.onDblClick = function(x, y, e) {
+Cosmos.prototype.onDblClick = function(x, y, e) {
     if (this.hidden || this.disabled) return
     Container.prototype.onDblClick.call(this, x/this.scale, y/this.scale, e)
 }
 
-World.prototype.onMouseDown = function(x, y, b, e) {
+Cosmos.prototype.onMouseDown = function(x, y, b, e) {
     if (this.hidden || this.disabled) return
     Container.prototype.onMouseDown.call(this, x/this.scale, y/this.scale, b, e)
 }
 
-World.prototype.onMouseUp = function(x, y, b, e) {
+Cosmos.prototype.onMouseUp = function(x, y, b, e) {
     if (this.hidden || this.disabled) return
     Container.prototype.onMouseUp.call(this, x/this.scale, y/this.scale, b, e)
 }
 
-World.prototype.onMouseMove = function(x, y, e) {
+Cosmos.prototype.onMouseMove = function(x, y, e) {
     if (this.hidden || this.disabled) return
     Container.prototype.onMouseMove.call(this, x/this.scale, y/this.scale, e)
 }
