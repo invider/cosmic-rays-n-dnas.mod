@@ -18,7 +18,7 @@ class Score {
         let percent = Math.floor(currentDamaged / atoms * 100);
 
         fill("white");
-        font(`${64 / $.cosmos.scale}px coolville`)
-        text(`L: ${100 - percent}% M: ${percent}% S: ${env.state.repaired}`, this.x, this.y + 15);
+        font(`${32 / $.cosmos.scale}px coolville`)
+        text(`Life: ${100 - percent}% Mutation: ${percent}% Score: ${env.state.repaired}`, this.x, this.y + 15);
     }
 }
