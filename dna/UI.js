@@ -21,9 +21,11 @@ class UI extends dna.hud.Container {
           y: $.cosmos.ry(.7),
 
           onClick: () => {
-              this.isShown = false;
               this.Z = -1;
-              trap('start')
+              if (this.isShown) {
+                  trap('start')
+              }
+              this.isShown = false;
           }
       })
   }

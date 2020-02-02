@@ -1,22 +1,8 @@
-
-function second() {
-    $.cosmos.spawn('Transition', {
-      Z: 9992,
-      name: 'transition2',
-      backgroundImage: res.backgrounds.splash2,
-      wait: 2.5,
-      fadein: 1,
-      keep: 2,
-      fadeout: 2,
-      onHidden: last,
-    });
-}
-
 function last() {
     // last one is on the lab!
     lab.spawn('Transition', {
-        wait: 0,
-        fadein: 0,
+        wait: 0.5,
+        fadein: 1,
         keep: 0.5,
         fadeout: 2,
         Z: 9000,
@@ -55,7 +41,7 @@ function splash() {
           fadein: 1,
           keep: 3,
           fadeout: 2,
-          onFadeout: second,
+          onFadeout: last,
         });
 
     }
