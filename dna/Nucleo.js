@@ -19,9 +19,6 @@ class Nucleo {
     evo(dt) {
         if (this.y < 0){
             lib.vfx.missed(this.x, this.y, this.type)
-            setTimeout(() => {
-                console.dir($.DNA.nombre)
-            }, 100)
             this.__.detach(this);
         }
         this.x += this.dx * dt

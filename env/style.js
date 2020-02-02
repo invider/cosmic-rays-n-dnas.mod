@@ -4,6 +4,8 @@ const style = {
     background: hsl(.76, .25, .05),
     targetWidth: 320,
     targetHeight: 240,
+    monitorWidth: 40,
+    monitorHeight: 40,
     border: 10,
 
     nucleotideBaseSize: 12,
