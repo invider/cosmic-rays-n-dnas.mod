@@ -4,8 +4,8 @@
 const defaults = {
     x: 0,
     y: 0,
-    w: 9,
-    h: 9,
+    w: 16,
+    h: 16,
 }
 
 class Nucleo {
