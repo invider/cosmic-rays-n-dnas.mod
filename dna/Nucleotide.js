@@ -40,6 +40,7 @@ class Nucleotide {
         }
 
     }
+
     setDamaged(color, damaged){
         if (this.left === color || "left" === color){
             this.leftDamaged = damaged;
@@ -55,6 +56,90 @@ class Nucleotide {
         if (this.right === color || "right" === color){
             return this.rightY;
         }
+    }
+
+    fixLeft(type) {
+        // hit! decide on the action
+        if (this.left !== type) return
+        this.leftDamaged = false
+        env.state.repaired ++;
+        lib.vfx.fix(this.x, this.y + this.leftY, this.left)
+    }
+
+    damageLeft() {
+        this.leftDamaged = true
+        env.state.misfixed ++;
+        lib.vfx.misfix(this.x, this.y + this.leftY, this.left)
+    }
+
+    fixRight(type) {
+        // hit! decide on the action
+        if (this.right !== type) return
+        this.rightDamaged = false
+        env.state.repaired ++;
+        lib.vfx.fix(this.x, this.y + this.rightY, this.right)
+    }
+
+    damageRight() {
+        this.rightDamaged = true
+        env.state.misfixed ++;
+        lib.vfx.misfix(this.x, this.y + this.rightY, this.right)
+    }
+
+    touchLeft(x, y, type) {
+        if (this.leftY < 0) return
+        const d = dist(x, y, this.x, this.leftY)
+        if (d < env.tune.hitDistance) {
+
+            if (this.leftDamanged) {
+                log('fixing left!')
+                console.dir(this)
+                console.log(type)
+                console.log(this.left)
+                this.fixLeft(type)
+
+            } else if (this.left !== type) {
+                log('misfix left!')
+                console.dir(this)
+                console.log(type)
+                console.log(this.left)
+                this.damageLeft()
+            }
+            return true
+        }
+    }
+
+    touchRight(x, y, type) {
+        if (this.rightY < 0) return
+        const d = dist(x, y, this.x, this.rightY)
+        if (d < env.tune.hitDistance) {
+
+            // hit! decide on the action
+            if (this.rightDamaged) {
+                log('fixing right!')
+                console.dir(this)
+                console.log(type)
+                console.log(this.right)
+
+                this.fixRight(type)
+
+            } else if (this.right !== type) {
+                log('misfix right!')
+                console.dir(this)
+                console.log(type)
+                console.log(this.right)
+                this.damageRight()
+            }
+
+            return true
+        }
+    }
+
+    getDistanceToLeft(x, y) {
+        return dist(x, y, this.x, this.leftY)
+    }
+    getDistanceToRight(x, y) {
+        return dist(x, y, this.x, this.rightY)
     }
     getDistanceToAtom(x, y, color){
         return dist(x, y, this.x, this.getAtomY(color));

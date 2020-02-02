@@ -3,7 +3,7 @@ const tune = {
     border: 10,
 
     shotSpeed: 80,
-    hitDistance: 30,
+    hitDistance: 10,
     
     nucleoColors: {
       "blue": [res.sprites.atom_blue, "#091c67"],
