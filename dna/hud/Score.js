@@ -12,10 +12,13 @@ class Score {
     }
 
     draw(){
-        fill("white")
-        text(`D: ${env.state.damaged - env.state.repaired}`, this.x, this.y + 10);
-        text(`R: ${env.state.repaired}`, this.x, this.y + 30);
-        text(`T: ${env.state.damaged}`, this.x, this.y + 50);
+        let nodes = lib.util.findNode(o => o instanceof dna.Nucleotide);
+        let atoms = nodes.length * 2;
+        let currentDamaged = env.state.damaged - env.state.repaired;
+        let percent = Math.floor(currentDamaged / atoms * 100);
 
+        fill("white");
+        font(`${64 / $.cosmos.scale}px coolville`)
+        text(`L: ${100 - percent}% M: ${percent}% S: ${env.state.repaired}`, this.x, this.y + 15);
     }
 }
