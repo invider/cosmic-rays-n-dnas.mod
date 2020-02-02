@@ -15,9 +15,9 @@ class Dna extends sys.LabFrame {
     init() {
         const step = 20
 
-        let x = step
+        let x = step * 2
 
-        while (x < $.cosmos.rx(1)) {
+        while (x < $.cosmos.rx(1) - step) {
             this.spawn(dna.Nucleotide, {
                 x: x,
                 y: 0,
