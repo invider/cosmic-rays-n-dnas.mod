@@ -2,7 +2,8 @@
 const tune = {
     border: 10,
 
-    radiationFq: .7,
+    radiationFq: .4,
+    radiationTimeFactor: 1.1,
 
     shotSpeed: 120,
     hitDistance: 10,
