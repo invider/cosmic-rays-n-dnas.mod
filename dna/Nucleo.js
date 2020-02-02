@@ -32,7 +32,8 @@ class Nucleo {
                 if (dist < env.tune.hitDistance){
                     lib.vfx.hit(this.x, this.y, this.type)
                     this.__.detach(this);
-                    o.setDamaged(this.type, false)
+                    o.setDamaged(this.type, false);
+                    env.state.repaired ++;
                 }
             });
     }

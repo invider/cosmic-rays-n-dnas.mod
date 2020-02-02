@@ -7,7 +7,11 @@ function start() {
     $.DNA = DNA
 
     const monitor = $.cosmos.spawn('hud/Monitor')
-
+    const score = $.cosmos.spawn('hud/Score', {
+        x: 1, 
+        y: 5,
+        Z: 100000
+    })
     //lib.util.hideCursor()
 
     // create dna and nanobot
