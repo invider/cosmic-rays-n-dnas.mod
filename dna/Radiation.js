@@ -32,6 +32,7 @@ class Radiation {
                 } else {
                     this.target.rightDamaged = true;
                 }
+                lib.vfx.damage(this.x, this.y)
                 this.__.detach(this);
             }
             this.minDist = Math.min(this.minDist, dist);
