@@ -27,13 +27,12 @@ class Radiation {
             this.y += ySpeed * speed;
             
             if (dist < 20 || dist > this.minDist) {
-                if (this.targetDirection === "left") {
-                    this.target.leftDamaged = true;
-                } else {
-                    this.target.rightDamaged = true;
-                }
-                lib.vfx.damage(this.x, this.y)
-                env.state.damaged ++;
+                if (!this.target.isDamaged(this.targetDirection)){
+                    lib.vfx.damage(this.x, this.y)
+                    this.target.setDamaged(this.targetDirection, true);
+                    env.state.damaged ++;
+                };
+                
                 this.__.detach(this);
             }
             this.minDist = Math.min(this.minDist, dist);
