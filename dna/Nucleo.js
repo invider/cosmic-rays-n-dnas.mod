@@ -25,16 +25,26 @@ class Nucleo {
         this.x += this.dx * dt
         this.y += this.dy * dt
 
-        lib.util.findNode(o => o instanceof dna.Nucleotide
-                && o.isDamaged(this.type))
+        //&& o.isDamaged(this.type))
+        lib.util.findNode(o => o instanceof dna.Nucleotide)
             .forEach(o => {
-                let dist = o.getDistanceToAtom(this.x, this.y, this.type);
-                if (dist < env.tune.hitDistance){
+                //let dist = o.getDistanceToAtom(this.x, this.y, this.type);
+
+                if (o.touchLeft(this.x, this.y, this.type)) {
+                    this.__.detach(this);
+
+                } else if (o.touchRight(this.x, this.y, this.type)) {
                     lib.vfx.hit(this.x, this.y, this.type)
+                    this.__.detach(this);
+
+                }
+                /*
+                if (dist < env.tune.hitDistance){
                     this.__.detach(this);
                     o.setDamaged(this.type, false);
                     env.state.repaired ++;
                 }
+                */
             });
     }
 
