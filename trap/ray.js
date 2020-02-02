@@ -1,6 +1,7 @@
 function ray() {
     let nodes = lib.util.findNode(o => o instanceof dna.Nucleotide);
     let toDamage = lib.math.rnde(nodes.filter(o => !o.leftDamaged || !o.rightDamaged ));
+    if (!toDamage) return
 
     if (!toDamage.leftDamaged){
         $.cosmos.dna.spawn(dna.Radiation, {

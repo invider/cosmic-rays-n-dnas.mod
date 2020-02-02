@@ -8,8 +8,8 @@ function start() {
 
     // const monitor = $.cosmos.spawn('hud/Monitor')
     const score = $.cosmos.spawn('hud/Score', {
-        x: 1, 
-        y: 5,
+        x: 0, 
+        y: 0,
         Z: 100000
     })
     //lib.util.hideCursor()
@@ -26,4 +26,6 @@ function start() {
     cosmos.spawn('spaceBackground', {
         name: 'stars'
     })
+
+    lab.spawn('radiationSource')
 }

@@ -2,7 +2,9 @@
 const tune = {
     border: 10,
 
-    shotSpeed: 80,
+    radiationFq: .7,
+
+    shotSpeed: 120,
     hitDistance: 10,
     
     nucleoColors: {

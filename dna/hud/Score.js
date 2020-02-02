@@ -16,8 +16,15 @@ class Score {
     }
 
     evo() {
-        if (this.life <= 0) {
+
+        if (!this.isGameOver && this.life <= 0) {
+            log('game over!')
             this.isGameOver = true;
+
+            $.lab.hud.cosmos.dna.detach()
+            $.dna.dead = true
+            $.dna.draw = false
+            $.dna.evo = false 
         }
     }
 
@@ -34,16 +41,27 @@ class Score {
             background('#000');
             fill("white");
             font(`${32 / $.cosmos.scale}px coolville`)
-            text('GAME OVER!!!', this.__.rx(.5) - 30, this.__.ry(.5) - 10);
-            text(`SCORE - ${env.state.repaired * 100}`, this.__.rx(.5) - 20, this.__.ry(.5) + 10);
+            alignCenter()
+            baseMiddle()
+            text('GAME OVER!!!', this.__.rx(.5), this.__.ry(.5));
+            text(`SCORE - ${env.state.repaired * 100}`, this.__.rx(.5), this.__.ry(.5) + 12);
         } else {
+
             image(res.ui.hud, 0, this.y, 320, H);
-            fill("white");
-            const f = `${FONT_SIZE * $.cosmos.scale}px coolville`
+
+            //const fontSize = FONT_SIZE * $.cosmos.scale
+            const fontSize = 10
+            const f = `${fontSize}px coolville`
             font(f)
+            fill("white");
             alignLeft()
             baseMiddle()
-            text(`Life: ${this.life}% Score: ${env.state.repaired * 100}`, this.x + 10, this.y + 9);
+            //text(`Life: ${this.life}% Score: ${env.state.repaired * 100}`, this.x + 10, this.y);
+            text(`Life: ${this.life}% Score: ${env.state.repaired * 100}`, this.x + 10, this.y + 7);
+            
+            //stroke('#ffff00')
+            //line(10, 0, 10, fontSize)
+            //rect(0, 0, 320, 240)
         }
     }
 }
