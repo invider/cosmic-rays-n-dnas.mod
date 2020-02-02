@@ -14,10 +14,6 @@ function second() {
 
 function last() {
     // last one is on the lab!
-    $.cosmos.spawn('UI', {
-        name: '123'
-    });
-
     lab.spawn('Transition', {
         wait: 0,
         fadein: 0,
@@ -28,8 +24,9 @@ function last() {
         backgroundColor: '#000000',
 
         onFadeout: () => {
-            // TODO uncomment
-            // trap('start')
+            $.cosmos.spawn('UI', {
+                name: '123'
+            });
         }
     });
 }

@@ -5,8 +5,10 @@ class UI extends dna.hud.Container {
       this.name = 'ui'
       this.x = 0
       this.y = 0
+      this.z = 1;
       this.w = $.cosmos.rx(1)
       this.h = $.cosmos.ry(1)
+      this.isShown = true;
   }
 
   init() {
@@ -15,11 +17,13 @@ class UI extends dna.hud.Container {
           name: 'newGame',
           img: res.ui.start,
           scale: 2,
-          x: $.cosmos.rx(.5),
-          y: $.cosmos.ry(.5),
+          x: $.cosmos.rx(.5) - res.ui.start.width / 2,
+          y: $.cosmos.ry(.7),
 
-          onClick: function() {
-              log('click')
+          onClick: () => {
+              this.isShown = false;
+              this.Z = -1;
+              trap('start')
           }
       })
   }
@@ -28,14 +32,13 @@ class UI extends dna.hud.Container {
   }
 
   drawBackground() {
+      if (!this.isShown) return;
       image(res.backgrounds.start_background,
-              0, 0, this.w, this.h)
-      //fill('404040')
-      //rect(0, 0, this.w, this.h)
-      //background(res.backgrounds.start_background)
+              0, 0, this.w, this.h);
   }
 
   draw() {
+      if (!this.isShown) return;
       super.draw()
   }
 }
