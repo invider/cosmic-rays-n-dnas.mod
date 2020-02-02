@@ -60,10 +60,16 @@ class Nucleotide {
 
     fixLeft(type) {
         // hit! decide on the action
-        if (this.left !== type) return
-        this.leftDamaged = false
-        env.state.repaired ++;
-        lib.vfx.fix(this.x, this.y + this.leftY, this.left)
+        if (this.left !== type) {
+            // wrong color!
+            // TODO change?
+            lib.vfx.changeColor(this.x, this.y + this.leftY, type)
+
+        } else {
+            this.leftDamaged = false
+            env.state.repaired ++;
+            lib.vfx.fix(this.x, this.y + this.leftY, this.left)
+        }
     }
 
     damageLeft() {
@@ -74,10 +80,16 @@ class Nucleotide {
 
     fixRight(type) {
         // hit! decide on the action
-        if (this.right !== type) return
-        this.rightDamaged = false
-        env.state.repaired ++;
-        lib.vfx.fix(this.x, this.y + this.rightY, this.right)
+        if (this.right !== type) {
+            // wrong color!
+            // TODO change?
+            lib.vfx.changeColor(this.x, this.y + this.rightY, type)
+
+        } else {
+            this.rightDamaged = false
+            env.state.repaired ++;
+            lib.vfx.fix(this.x, this.y + this.rightY, this.right)
+        }
     }
 
     damageRight() {
@@ -91,19 +103,22 @@ class Nucleotide {
         const d = dist(x, y, this.x, this.leftY)
         if (d < env.tune.hitDistance) {
 
-            if (this.leftDamanged) {
-                log('fixing left!')
-                console.dir(this)
-                console.log(type)
-                console.log(this.left)
+            if (this.leftDamaged) {
+                //log('=== fixing left! ===')
+                //console.log('hit by ' + type + ' == ' + this.left)
+                //console.dir(this)
                 this.fixLeft(type)
 
             } else if (this.left !== type) {
-                log('misfix left!')
-                console.dir(this)
-                console.log(type)
-                console.log(this.left)
-                this.damageLeft()
+                //log('misfix left!!!')
+                //console.log('hit by ' + type + ' == ' + this.left)
+                //console.dir(this)
+                this.damageLeft(type)
+            } else {
+                //log('left friendly fire on existing!!!')
+                //console.log('hit by ' + type + ' == ' + this.left)
+                //console.dir(this)
+                lib.vfx.misfix(this.x, this.y + this.leftY, this.right)
             }
             return true
         }
@@ -117,18 +132,21 @@ class Nucleotide {
             // hit! decide on the action
             if (this.rightDamaged) {
                 log('fixing right!')
-                console.dir(this)
-                console.log(type)
-                console.log(this.right)
+                //console.log('hit by ' + type + ' == ' + this.right)
+                //console.dir(this)
 
                 this.fixRight(type)
 
             } else if (this.right !== type) {
                 log('misfix right!')
-                console.dir(this)
-                console.log(type)
-                console.log(this.right)
+                //console.log('hit by ' + type + ' == ' + this.right)
+                //console.dir(this)
                 this.damageRight()
+            } else {
+                log('right friendly fire on existing!!!')
+                //console.log('hit by ' + type + ' == ' + this.right)
+                //console.dir(this)
+                lib.vfx.misfix(this.x, this.y + this.leftY, this.right)
             }
 
             return true
