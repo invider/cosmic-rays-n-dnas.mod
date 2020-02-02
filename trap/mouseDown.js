@@ -1,3 +1,3 @@
 function mouseDown(e) {
-    $.bot.shot()
+    if ($.bot) $.bot.shot()
 }

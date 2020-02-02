@@ -1,5 +1,10 @@
 const Z = 0
 
+// @depends(env/style)
+function init() {
+    this.color = env.style.space
+}
+
 function draw() {
-    background(env.style.background)
+    background(this.color)
 }

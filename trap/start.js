@@ -14,4 +14,10 @@ function start() {
 
     // make a shortcut
     $.bot = bot
+
+    lab.background.color = env.style.background
+
+    cosmos.spawn('spaceBackground', {
+        name: 'stars'
+    })
 }
