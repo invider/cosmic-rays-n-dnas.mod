@@ -33,6 +33,7 @@ class Radiation {
                     this.target.rightDamaged = true;
                 }
                 lib.vfx.damage(this.x, this.y)
+                env.state.damaged ++;
                 this.__.detach(this);
             }
             this.minDist = Math.min(this.minDist, dist);
