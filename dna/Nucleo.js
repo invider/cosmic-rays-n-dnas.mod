@@ -14,7 +14,7 @@ class Nucleo {
     }
 
     evo(dt) {
-        if (this.y < 0){
+        if (this.y < -240){
             this.__.detach(this);
         }
         this.x += this.dx * dt

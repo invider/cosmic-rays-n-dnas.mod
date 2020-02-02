@@ -31,10 +31,13 @@ class Nanobot {
     }
 
     prepareNextShot() {
-        this.nextShot = $.cosmos.spawn(dna.Nucleo, {
+        
+        this.nextShot = $.DNA.spawn(dna.Nucleo, {
             Z: this.Z + 1,
-            x: this.x,
-            y: this.y,
+            x: $.DNA.lx(this.x),
+            y: $.DNA.ly(this.y) - 12,
+            //x: 0,
+            //y: 100,
             dx: 0,
             dy: 0,
             image: lib.util.getRandomNucleoColor()[0]

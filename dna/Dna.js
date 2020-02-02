@@ -32,4 +32,20 @@ class Dna extends sys.LabFrame {
         super.draw();
         restore();
     }
+
+    lx(x) {
+        return x - this.x
+    }
+
+    ly(y) {
+        return y - this.y
+    }
+
+    ox(x) {
+        return this.x + x
+    }
+
+    oy(y) {
+        return this.y + y
+    }
 }

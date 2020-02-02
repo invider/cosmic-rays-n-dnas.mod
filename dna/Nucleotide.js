@@ -14,7 +14,6 @@ class Nucleotide {
         augment(this, settings);
     }
 
-
     evo(dt){
         this.rotation += dt * 0.5;
 
