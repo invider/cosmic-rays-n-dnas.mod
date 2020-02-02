@@ -40,6 +40,7 @@ class Transition {
       case FADE_IN:
               this.state = KEEP;
               this.time = this.keep;
+          if (this.onKeep) this.onKeep()
               break;
       case KEEP:
               this.state = FADE_OUT;
@@ -78,7 +79,8 @@ class Transition {
         break;
     }
 
-    if (this.backgroundImage) {
+      blocky();
+      if (this.backgroundImage) {
         image(this.backgroundImage, 0, 0,
             this.__.rx(1), this.__.ry(1))
     } else {

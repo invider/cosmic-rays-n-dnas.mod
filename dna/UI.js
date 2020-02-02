@@ -35,6 +35,7 @@ class UI extends dna.hud.Container {
 
   drawBackground() {
       if (!this.isShown) return;
+      blocky();
       image(res.backgrounds.start_background,
               0, 0, this.w, this.h);
   }
