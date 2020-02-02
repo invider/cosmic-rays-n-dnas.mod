@@ -6,7 +6,7 @@ function start() {
     })
     $.DNA = DNA
 
-    //const monitor = $.cosmos.spawn('hud/Monitor')
+    const monitor = $.cosmos.spawn('hud/Monitor')
 
     //lib.util.hideCursor()
 

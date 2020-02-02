@@ -12,7 +12,8 @@ class Monitor {
 
         const w = env.style.monitorWidth
         const h = env.style.monitorHeight
-        const hb = $.cosmos.rx(.5) - w/2
+        //const hb = $.cosmos.rx(.5) - w/2 // middle
+        const hb = 5 // left
         const vb = 5
         blocky()
         image(screen.ctx.canvas, hb, vb, w, h)

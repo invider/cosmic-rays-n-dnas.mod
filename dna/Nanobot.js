@@ -40,7 +40,7 @@ class Nanobot {
             //y: 100,
             dx: 0,
             dy: 0,
-            image: lib.util.getRandomNucleoColor()[0]
+            typeDef: lib.util.getRandomNucleoColor(),
         })
     }
 

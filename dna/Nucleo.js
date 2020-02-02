@@ -13,7 +13,8 @@ class Nucleo {
     constructor(st) {
         augment(this, defaults)
         augment(this, st)
-        this.type = "red";
+        this.type = this.typeDef[2]
+        this.image = this.typeDef[0]
     }
 
     evo(dt) {
@@ -28,7 +29,7 @@ class Nucleo {
                 && o.isDamaged(this.type))
             .forEach(o => {
                 let dist = o.getDistanceToAtom(this.x, this.y, this.type);
-                if (dist < 30){
+                if (dist < env.tune.hitDistance){
                     lib.vfx.hit(this.x, this.y, this.type)
                     this.__.detach(this);
                     o.setDamaged(this.type, false)

@@ -3,10 +3,18 @@ const tune = {
     border: 10,
 
     shotSpeed: 80,
-
+    hitDistance: 30,
+    
     nucleoColors: {
       "blue": [res.sprites.atom_blue, "#091c67"],
       "red": [res.sprites.atom_red, "#670909"],
       "green": [res.sprites.atom_green, "#006704"]
-    }
+    },
+
+    init: function() {
+        const colors = this.nucleoColors
+        Object.keys(this.nucleoColors).forEach(k => {
+            colors[k].push(k)
+        })
+    },
 }
