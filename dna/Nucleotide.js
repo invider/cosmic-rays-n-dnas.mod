@@ -75,6 +75,7 @@ class Nucleotide {
     damageLeft() {
         this.leftDamaged = true
         env.state.misfixed ++;
+        env.state.damaged ++; 
         lib.vfx.misfix(this.x, this.y + this.leftY, this.left)
     }
 
@@ -95,6 +96,7 @@ class Nucleotide {
     damageRight() {
         this.rightDamaged = true
         env.state.misfixed ++;
+        env.state.damaged ++; 
         lib.vfx.misfix(this.x, this.y + this.rightY, this.right)
     }
 
