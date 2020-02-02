@@ -1,9 +1,10 @@
+let ZZ = 11
+
 class Nanobot {
 
     constructor(st) {
-        this.Z = 11
+        this.Z = 1000000
         this.name = 'nanobot'
-        this.r = 16
         this.x = 0
         this.y = 0
 
@@ -33,9 +34,9 @@ class Nanobot {
     prepareNextShot() {
         
         this.nextShot = $.DNA.spawn(dna.Nucleo, {
-            Z: this.Z + 1,
+            Z: ZZ + 1,
             x: $.DNA.lx(this.x),
-            y: $.DNA.ly(this.y) - 12,
+            y: $.DNA.ly(this.y) - 8,
             //x: 0,
             //y: 100,
             dx: 0,
