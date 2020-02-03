@@ -20,6 +20,7 @@ class Nucleo {
     evo(dt) {
         if (this.y < 0){
             lib.vfx.missed(this.x, this.y, this.type)
+            sfx(res.sfx.explosionLow)
             this.__.detach(this);
         }
         this.x += this.dx * dt

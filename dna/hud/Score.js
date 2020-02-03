@@ -6,7 +6,6 @@ class Score {
     constructor(settings){
         this.x = 0;
         this.y = 0;
-        this.isGameOver = false;
         augment(this, settings);
         this.life = 100;
     }
@@ -17,14 +16,16 @@ class Score {
 
     evo() {
 
-        if (!this.isGameOver && this.life <= 0) {
+        if (env.state.game === 'started' && this.life <= 0) {
             log('game over!')
-            this.isGameOver = true;
+            env.state.game = 'over'
 
             $.lab.hud.cosmos.dna.detach()
             $.dna.dead = true
             $.dna.draw = false
             $.dna.evo = false 
+
+            sfx(res.sfx.gameover)
         }
     }
 
@@ -35,7 +36,7 @@ class Score {
         let percent = Math.floor(currentDamaged / atoms * 100);
         this.life = 100 - percent;
 
-        if (this.isGameOver) {
+        if (env.state.game === 'over') {
             this.Z = 1000001;
             kill($.bot);
             background('#000');

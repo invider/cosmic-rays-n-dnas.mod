@@ -28,4 +28,6 @@ function start() {
     })
 
     lab.spawn('radiationSource')
+
+    env.state.game = 'started'
 }

@@ -1,3 +1,3 @@
 function mouseDown(e) {
-    if ($.bot) $.bot.shot()
+    if ($.bot && env.state.game === 'started') $.bot.shot()
 }
