@@ -22,6 +22,7 @@ class Nanobot {
     shot() {
         this.nextShot.dy = -env.tune.shotSpeed;
         this.prepareNextShot();
+        sfx(res.sfx.shot)
     }
 
     evo() {

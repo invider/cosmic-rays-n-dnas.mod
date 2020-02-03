@@ -29,6 +29,7 @@ class Radiation {
             if (dist < 20 || dist > this.minDist) {
                 if (!this.target.isDamaged(this.targetDirection)){
                     lib.vfx.damage(this.x, this.y)
+                    sfx(res.sfx.explosion)
                     this.target.setDamaged(this.targetDirection, true);
                     env.state.damaged ++;
                 };
