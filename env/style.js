@@ -9,7 +9,7 @@ const style = {
     monitorHeight: 64,
     border: 10,
 
-    nucleotideBaseSize: 12,
+    nucleotideBaseSize: 8,
     rotationScaleFactor: 8,
     nucleotideLinkWidth: 2,
 }

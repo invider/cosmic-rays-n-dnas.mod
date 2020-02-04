@@ -466,8 +466,8 @@ function updateLoadingStatus() {
     let amount = 1
     if (state === 'loading' || state === 'holding') {
         // we are faking percentage to include time left to hold
-        if (hold === 0) amount = loaded/included
-        else amount = (loaded/included + time/hold)/2
+        if (hold === 0) amount = min(loaded/included, 1)
+        else amount = min((loaded/included + time/hold)/2, 1)
     }
 
     const percent = Math.round(amount * 100)

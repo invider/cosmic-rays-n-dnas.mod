@@ -2,8 +2,10 @@
 const tune = {
     border: 10,
 
-    radiationFq: .4,
-    radiationTimeFactor: 1.1,
+    radiationFq: .35,
+    radiationTimeFactor: 1.08,
+
+    nanoStep: 17, // distance between dna-lines
 
     shotSpeed: 120,
     hitDistance: 10,

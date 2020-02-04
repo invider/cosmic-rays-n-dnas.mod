@@ -13,7 +13,7 @@ class Dna extends sys.LabFrame {
     }
 
     init() {
-        const step = 20
+        const step = env.tune.nanoStep
 
         let x = step * 2
 

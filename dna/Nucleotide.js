@@ -10,7 +10,7 @@ class Nucleotide {
         this.right = lib.util.getRandomColor();
         this.nucleoColors = env.tune.nucleoColors;
         this.rotation = 0;
-        this.size = $.cosmos.ry(.2)
+        this.size = $.cosmos.ry(.17)
         augment(this, settings);
     }
 
@@ -38,7 +38,6 @@ class Nucleotide {
         if (this.right === color || "right" === color){
             return this.rightDamaged;
         }
-
     }
 
     setDamaged(color, damaged){
@@ -175,7 +174,6 @@ class Nucleotide {
         
     // }
     draw(){
-       
         lineWidth(env.style.nucleotideLinkWidth);
         stroke(this.nucleoColors[this.left][1]);
         line(this.x, this.y - this.distance, this.x, this.y);

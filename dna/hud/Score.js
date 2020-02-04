@@ -41,11 +41,13 @@ class Score {
             kill($.bot);
             background('#000');
             fill("white");
-            font(`${32 / $.cosmos.scale}px coolville`)
+            font('18px coolville')
             alignCenter()
             baseMiddle()
-            text('GAME OVER!!!', this.__.rx(.5), this.__.ry(.5));
-            text(`SCORE - ${env.state.repaired * 100}`, this.__.rx(.5), this.__.ry(.5) + 12);
+            text(res.msg.gameover, this.__.rx(.5), this.__.ry(.5));
+
+            text(`SCORE - ${env.state.repaired * 100}`, this.__.rx(.5), this.__.ry(.5) + 20);
+
         } else {
 
             image(res.ui.hud, 0, this.y, 320, H);
