@@ -1,17 +1,14 @@
-
 const FONT_SIZE = 6
-const H = 16
 
 class Score {
+
     constructor(settings){
         this.x = 0;
         this.y = 0;
+        this.w = res.ui.hud.width
+        this.h = res.ui.hud.height
         augment(this, settings);
         this.life = 100;
-    }
-
-    init() {
-       
     }
 
     evo() {
@@ -50,7 +47,7 @@ class Score {
 
         } else {
 
-            image(res.ui.hud, 0, this.y, 320, H);
+            image(res.ui.hud, 0, this.y, this.w, this.h);
 
             //const fontSize = FONT_SIZE * $.cosmos.scale
             const fontSize = 10
@@ -61,6 +58,18 @@ class Score {
             baseMiddle()
             //text(`Life: ${this.life}% Score: ${env.state.repaired * 100}`, this.x + 10, this.y);
             text(`Life: ${this.life}% Score: ${env.state.repaired * 100}`, this.x + 10, this.y + 7);
+
+            // show next
+            const nw = 12
+            const gap = 2
+            let y = this.y + 1
+            let x = this.w - 4*nw
+            const next = job.nucleoSource.getFutureList()
+            next.forEach(type => {
+                const img = env.tune.nucleoColors[type][0]
+                image(img, x, y, nw, nw)
+                x += nw + gap
+            })
             
             //stroke('#ffff00')
             //line(10, 0, 10, fontSize)

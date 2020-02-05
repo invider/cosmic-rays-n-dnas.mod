@@ -8,5 +8,7 @@ function setup() {
     // global shortcut to cosmos
     $.cosmos = cosmos
 
+    env.sfxVolume = .7
+
     trap('splash')
 }
