@@ -7,6 +7,7 @@ const tune = {
 
     nanoStep: 17, // distance between dna-lines
 
+    moveSpeed: 250,
     shotSpeed: 120,
     hitDistance: 10,
     

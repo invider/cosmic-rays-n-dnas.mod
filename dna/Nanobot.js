@@ -1,5 +1,7 @@
 let ZZ = 11
 
+const CONTROL_TIMEOUT = 10 * 1000
+
 class Nanobot {
 
     constructor(st) {
@@ -7,6 +9,9 @@ class Nanobot {
         this.name = 'nanobot'
         this.x = 0
         this.y = 0
+        this.actions = {
+            lastTime: 0,
+        }
 
         this.w = res.sprites.bot.width
         this.h = res.sprites.bot.height
@@ -25,12 +30,35 @@ class Nanobot {
         sfx(res.sfx.shot)
     }
 
-    evo() {
+    evo(dt) {
         const edge = env.tune.border + this.w / 2
-        this.x = limit($.cosmos.worldX(mouse.x),
-            edge, $.cosmos.rx(1) - edge)
+        // determine the controls
+        let pads = false
+        const sinceLast = Date.now() - this.actions.lastTime
+        if (sinceLast < CONTROL_TIMEOUT) pads = true
+
+        if (pads) {
+            // movement control by keys/pads
+            if (this.actions.left) {
+                this.x -= env.tune.moveSpeed * dt
+                this.x = limit(this.x,
+                    edge, $.cosmos.rx(1) - edge)
+
+            } else if (this.actions.right) {
+                this.x += env.tune.moveSpeed * dt
+                this.x = limit(this.x,
+                    edge, $.cosmos.rx(1) - edge)
+            }
+
+        } else {
+            // movement control by mouse
+            this.x = limit($.cosmos.worldX(mouse.x),
+                edge, $.cosmos.rx(1) - edge)
+        }
+
         this.nextShot.x = this.x
     }
+
 
     prepareNextShot() {
         
@@ -57,5 +85,19 @@ class Nanobot {
         lineWidth(1)
         rect(x-w/2, y-h/2, w, h)
         */
+    }
+
+    act(action) {
+        if (action === 'shot' && !this.actions[action]) {
+            this.shot()
+        }
+
+        this.actions[action] = true
+        this.actions.lastTime = Date.now()
+    }
+
+    stop(action) {
+        this.actions[action] = false
+        this.actions.lastTime = Date.now()
     }
 }

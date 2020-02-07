@@ -1,3 +1,3 @@
 function spaceDown(e) {
-    if ($.bot) $.bot.shot()
+    //if ($.bot) $.bot.shot()
 }
