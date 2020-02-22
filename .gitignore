@@ -2,6 +2,7 @@
 
 # collider.jam
 units.json
+types.ts
 dist
 *.out
 
