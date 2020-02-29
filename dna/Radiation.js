@@ -20,9 +20,9 @@ class Radiation {
             let speed = dt * 200;
             let xSpeed = (this.target.x - this.x);
             let ySpeed = (targetY - this.y);
-            let len = length(xSpeed, ySpeed)
-            xSpeed /= len
-            ySpeed /= len
+            let length = len(xSpeed, ySpeed)
+            xSpeed /= length
+            ySpeed /= length
             this.x += xSpeed * speed;
             this.y += ySpeed * speed;
             
